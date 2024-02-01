@@ -18,6 +18,16 @@ public class ShowelWeaponScript : MonoBehaviour
             StartCoroutine(attack());
         }
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (!canAttack)
+        {
+            if (collision.gameObject.CompareTag("Enemy"))
+            {
+                collision.gameObject.GetComponent<EnemyScript>().TakeDamage(50);
+            }
+        }
+    }
     IEnumerator attack()
     {
         canAttack = false;

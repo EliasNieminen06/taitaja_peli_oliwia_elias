@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovementScript : MonoBehaviour
 {
@@ -21,12 +22,15 @@ public class PlayerMovementScript : MonoBehaviour
     Vector3 velocity;
     bool isGrounded;
     CharacterController controller;
+    float health;
+    float maxHealth = 100;
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        health = maxHealth;
     }
 
     // Update is called once per frame
@@ -34,6 +38,12 @@ public class PlayerMovementScript : MonoBehaviour
     {
         updateMove();
         updateMouse();
+        if (health <= 0)
+        {
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
+            SceneManager.LoadScene(1);
+        }
     }
     void updateMove()
     {
@@ -58,5 +68,10 @@ public class PlayerMovementScript : MonoBehaviour
         cameraCap = Mathf.Clamp(cameraCap, -90, 90);
         playerCamera.localEulerAngles = Vector3.right * cameraCap;
         transform.Rotate(Vector3.up * currentMouseDelta.x * mouseSensitivity);
+    }
+
+    public void TakeDamage(float damage)
+    {
+        health -= damage;
     }
 }
