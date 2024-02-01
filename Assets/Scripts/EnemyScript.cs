@@ -9,6 +9,7 @@ public class EnemyScript : MonoBehaviour
     public GameObject player;
     bool canFind = true;
     NavMeshAgent agent;
+    [SerializeField] GameObject eye;
 
     void Start()
     {
@@ -33,6 +34,7 @@ public class EnemyScript : MonoBehaviour
         // Check if health is less than or equal to 0
         if (currentHealth <= 0)
         {
+            Instantiate(eye, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
             // If health is 0 or below, destroy the enemy
             DestroyEnemy();
         }

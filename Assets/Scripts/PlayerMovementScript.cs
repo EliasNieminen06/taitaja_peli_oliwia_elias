@@ -8,6 +8,8 @@ public class PlayerMovementScript : MonoBehaviour
     [SerializeField] Transform playerCamera;
     [SerializeField] Transform groundCheck;
     [SerializeField] LayerMask ground;
+    [SerializeField] ShowelWeaponScript sWS;
+    [SerializeField] ArrowScript aS;
     float mouseSmoothTime = 0.05f;
     float mouseSensitivity = 3.5f;
     float speed = 6f;
@@ -22,7 +24,7 @@ public class PlayerMovementScript : MonoBehaviour
     Vector3 velocity;
     bool isGrounded;
     CharacterController controller;
-    float health;
+    public float health;
     float maxHealth = 100;
     // Start is called before the first frame update
     void Start()
@@ -43,6 +45,10 @@ public class PlayerMovementScript : MonoBehaviour
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = true;
             SceneManager.LoadScene(1);
+        }
+        if (health > maxHealth)
+        {
+            health = maxHealth;
         }
     }
     void updateMove()
@@ -74,4 +80,16 @@ public class PlayerMovementScript : MonoBehaviour
     {
         health -= damage;
     }
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.gameObject.CompareTag("Eye"))
+        {
+            sWS.damage++;
+            aS.damage++;
+            health += 5;
+            Destroy(collision.gameObject);
+        }
+    }
+
 }
