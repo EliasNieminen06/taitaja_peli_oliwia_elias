@@ -50,6 +50,10 @@ public class PlayerMovementScript : MonoBehaviour
         {
             health = maxHealth;
         }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
     void updateMove()
     {
