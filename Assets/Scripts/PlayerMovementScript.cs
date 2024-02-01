@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class playermovement : MonoBehaviour
+public class PlayerMovementScript : MonoBehaviour
 {
     [SerializeField] Transform playerCamera;
     [SerializeField] Transform groundCheck;
