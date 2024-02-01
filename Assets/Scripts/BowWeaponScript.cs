@@ -8,9 +8,10 @@ public class BowWeaponScript : MonoBehaviour
     [SerializeField] Transform arrowSpawnPoint;
     float reloadTime = 1.5f;
     float shotPower = 20f;
-    bool canAttack = true;
+    public bool canAttack = true;
     private void Start()
     {
+        canAttack = true;
     }
     private void Update()
     {

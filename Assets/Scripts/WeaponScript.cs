@@ -5,6 +5,8 @@ using UnityEngine;
 public class WeaponScript : MonoBehaviour
 {
     [SerializeField] GameObject[] weaponSlot;
+    [SerializeField] ShowelWeaponScript sws;
+    [SerializeField] BowWeaponScript bws;
     public int currentWeapon;
     // Start is called before the first frame update
     void Start()
@@ -24,6 +26,17 @@ public class WeaponScript : MonoBehaviour
         {
             weaponSlot[0].SetActive(false);
             weaponSlot[1].SetActive(true);
+        }
+        if (Input.GetKeyDown(KeyCode.F) && sws.canAttack && bws.canAttack)
+        {
+            if (currentWeapon == 1)
+            {
+                currentWeapon = 0;
+            }
+            else
+            {
+                currentWeapon = 1;
+            }
         }
     }
 }

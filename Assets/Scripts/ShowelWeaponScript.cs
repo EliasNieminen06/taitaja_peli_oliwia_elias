@@ -6,7 +6,8 @@ public class ShowelWeaponScript : MonoBehaviour
 {
     [SerializeField] Animator anim;
     float attackCooldown = 1.0f;
-    bool canAttack = true;
+    public bool canAttack = true;
+    public int damage = 30;
     private void Start()
     {
         anim = GetComponent<Animator>();
@@ -24,7 +25,7 @@ public class ShowelWeaponScript : MonoBehaviour
         {
             if (collision.gameObject.CompareTag("Enemy"))
             {
-                collision.gameObject.GetComponent<EnemyScript>().TakeDamage(50);
+                collision.gameObject.GetComponent<EnemyScript>().TakeDamage(damage);
             }
         }
     }

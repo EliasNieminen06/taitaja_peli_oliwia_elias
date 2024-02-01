@@ -101,6 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   player: {fileID: 0}
+  eye: {fileID: 5187330102184221966, guid: 1330f41cf16f54fb09394fec5696b93a, type: 3}
 --- !u!195 &4203620014266502749
 NavMeshAgent:
   m_ObjectHideFlags: 0
