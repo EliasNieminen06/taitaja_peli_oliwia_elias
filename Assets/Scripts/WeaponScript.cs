@@ -4,13 +4,10 @@ using UnityEngine;
 
 public class WeaponScript : MonoBehaviour
 {
-    [SerializeField] bool weaponOnHand;
-    bool swordOnHand;
-    bool bowOnHand;
+    [SerializeField] GameObject[] weaponSlot;
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
